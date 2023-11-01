@@ -6,13 +6,14 @@
   - **Disk Space**: Are logs being rotated? Are temporary files cleaned away?
   - **Processor**: Are you closing disused threads? Do you avoid [busy waits](https://en.wikipedia.org/wiki/Busy_waiting)?
 - [ ] **[SOLID](https://en.wikipedia.org/wiki/SOLID) Principles**: When creating or modifying an object in code.
-- [ ] **Development Junk**: Has the development junk been cleaned up? *(Looking at you, `print(“milestone b3”)`! )*
+- [ ] **Development Junk**: Have work-in-progress logs and comments been cleaned up? *(Looking at you, `print(“milestone b3”)`! )*
+- [ ] **Nice File Locations**: Are file locations relative? Do they include any development environment paths, such as "C:/Users/JoeBloggs/projects/..."
 
 ## C++
 
 - [ ] **Modern Pointers**: No pointers which are not [smart pointers](https://learn.microsoft.com/en-us/cpp/cpp/smart-pointers-modern-cpp?view=msvc-170#c-standard-library-smart-pointers), unless required for interfacing with another library.
 - [ ] **Modern Mutexes**: No locks that are not [scoped locks](https://en.cppreference.com/w/cpp/thread/unique_lock), except where strictly required with explanation.
-- [ ] **Paremeter Efficiency**:
+- [ ] **Parameter Efficiency**:
     - `const` qualifier should be used wherever possible on parameters and member functions.
     - References should be used for all [non-scalar](https://www.oreilly.com/library/view/sql-and-relational/9781449319724/ch02s05.html#:~:text=It%27s%20usual%20to%20think%20of,itself%20is%20scalar%20or%20nonscalar.) types to avoid memory copies.
 - [ ] **Documentation**: Is the code commented and documented for future developers? Is it clear, accurate, up-to-date and essential?- [Doxygen](https://www.doxygen.nl/manual/docblocks.html) for C++
