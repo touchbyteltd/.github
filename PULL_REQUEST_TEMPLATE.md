@@ -1,6 +1,6 @@
 # Description
 
-<Please describe the purpose of the PR and what to look out for here.>
+ ++ Please describe the purpose of the PR and what to look out for here. Include links and screenshots of what to expect wherever appropriate. Help your reviewer! ++
 
 # Coding Standards
 
