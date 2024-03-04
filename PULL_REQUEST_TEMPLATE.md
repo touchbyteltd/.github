@@ -26,6 +26,9 @@
 - [ ] **Styling**: [pylint](https://pypi.org/project/pylint/) is strongly recommended during development to enforce the [PEP 8 Style Guide](https://peps.python.org/pep-0008/).
 - [ ] **Documentation**: Is the code commented and documented for future developers? Is it clear, accurate, up-to-date and essential?[Docstring](https://peps.python.org/pep-0257/) 
 
+## Terraform
+- [ ] **Resilience**: Have any services been added which need backup in a production environment?
+
 # Testing
 
 - [ ] **Does it run successfully?**
