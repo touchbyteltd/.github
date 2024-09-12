@@ -4,50 +4,56 @@ The short version.
 Full processes and information is on [Confluence](https://touchbyte.atlassian.net/wiki/x/AYAiAg).
 This is just for handling commits to the [facentry-universe](https://github.com/touchbyteltd/facentry-universe) and its submodules.
 
-## Writing Code
-
-The general process is as follows:
-
-1. Clone your repo.
-2. Set-up as per the `README.md`.
-3. Create a branch for your work (matching the issue code in [Jira](https://touchbyte.atlassian.net/jira/software/projects/FE/boards/1) where possible.)
-4. Do some sweet codemancer magic.
-5. Push to the cloud repo.
-6. Create a [Pull Request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
-7. Make any modifications needed to pass the tests.
-8. Get reviewed by someone else in the team and make the requested changes. (repeat as needed)
-9. Merge into `dev`.
-
-This isn't the place to write out good coding practices, but aim to write code worth being proud of.
-We run a bunch of tools to make sure it stays up to a standard but they can only go so far.
-Any real concerns about the right way to go can always be solved with a chat or some paired programming.
-
 ## Recommended Tools
 
-**Visual Studio Code Extensions**:
+**[Visual Studio Code Extensions](https://code.visualstudio.com/)**:
 Each repo should have a `.vscode/extensions.json` file that contains extensions recommended for the relevant repo.
-These vary from local tool equivalents of GitHub Actions to virtual environments for Windows addicts.
 Recommended tools will show up in the bottom left of the **extensions** tab, or through a popup in the lower right when opening the repository.
 If you don't use VSCode then you can still make use of this file as most extensions can be found online as standalone executables or scripts.
 
 *Authors note: VSCode pets didn't make the cut, but it's really cute and you should download that too.*
 
-## Testing
+**[*nektos/act](https://github.com/nektos/act)**: For testing workflow files locally.
+There is also a [dedicated repo](https://github.com/touchbyteltd/workflow-tests) for workflow testing to minimize potential damage to "real" code repositories.
+
+**[Windows Subsystem for Linux](https://learn.microsoft.com/en-us/windows/wsl/install)**: WSL is great for the Windows users amongst us who *need* a quick linux box to run tests in.
+
+### Writing and Committing your Code
+
+Once you have your environment set up, go and do your codemancer magic!
+This isn't the place to write out good coding practices, but aim to write code worth being proud of.
+Any real concerns about the right way to go can always be solved with a chat or some paired programming.
+
+`dev` is the default branch on every repo attached to the [facentry-universe](https://github.com/touchbyteltd/facentry-universe).
+
+**You cannot commit to `dev`**.
+
+All contributions must be made by creating a branch (matching the issue code in [Jira](https://touchbyte.atlassian.net/jira/software/projects/FE/boards/1), where possible) that will contain all commits related to your changes.
+We call these the **feature branches**.
+
+After work has been completed, use [Conventional commits](https://www.conventionalcommits.org/en/v1.0.0/), no matter how small the commit, so that the history is easily parsable by people and tools alike.
+
+There's an excellent [VSCode extention](https://marketplace.visualstudio.com/items?itemName=vivaxy.vscode-conventional-commits) that can help with this, including [gitmojis](https://gitmoji.dev/). 💩
+
+Commit little and often, so that any need to check the history can be easily tracked and rollbacks are minimally disruptive.
+
+## Unit Tests
 
 A super important component in long term reliability is unit testing.
-Our CI/CD process will run any unit tests available to the repo and code coverage tools will ensure that standards are kept up.
 Any time a new function or class is made, or any time a new pathway through the code is added, **a new unit test must be made** that covers the changes.
 Try to aim for successful, unsuccessful, and edge-case pathways to give your code the best chance of surviving future modifications.
+
+When you get to submitting a PR, a collection of GitHub actions will run any unit tests available to the repo and code coverage tools will ensure that standards are kept up.
 
 ## Documentation
 
 The `README.md` in each file should be a comprehensive guide to getting up and running as a developer with this repository.
 It should say how to **install**, **configure** and **use** the code within, as well as stating the **purpose** of the repository and any **extra restrictions and guidance** necessary for contributions.
-*We would appreciate additions to any and all missing sections of current repository `READMEs`.
+*We would appreciate additions to any and all missing sections of current repository `READMEs`.*
 
 The [support site](https://support.saltosystems.com/orion) must be updated upon completion of jobs that alter the following:
 
-- **User interfaces**, including Orion Device lighting and console responses.
+- **User interfaces**, including anything that the user interacts with such as Orion Device lighting and console output.
 - **User processes**, by which we mean any time the user has to do something different along their journey.
 This can be a new process altogether (eg. now you can enter with QR codes) or a modification of a current one (eg. when changing Space IP, go to `integrations` instead of `Site Configuration`).
 - **Legal alterations** when modifying the back-end, particularly when handling user biometric data.
@@ -59,13 +65,19 @@ They have their own restrictions to adhere to, such as the [style guide](https:/
 
 ## Pull Requests
 
-`dev` is the default branch on every repo attached to the [facentry-universe](https://github.com/touchbyteltd/facentry-universe).
+After completing your feature/bugfix, adding relevant tests and documenting the changes, create a [Pull Request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) in GitHub for someone else to review and merge into `dev`.
 
-**You cannot commit to `dev`**.
+> We work on a peer-review basis, where we check each other's work and merge without the need for the team leader to approve all pull requests.
+> This way, we all learn about each other's work and become experts on the whole of Orion over time.
+> For a quick guide on reviewing tasks yourself, check the `REVIEWING.md` doc.
 
-All contributions must be made by creating a branch (matching the issue code in [Jira](https://touchbyte.atlassian.net/jira/software/projects/FE/boards/1), where possible) and creating a [Pull Request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) back in.
+When creating your pull request The title should either:
 
-When creating your Pull Request, put a useful description in the box to help your reviewer for any non-trivial case.
+- Be the issue number in [Jira](https://touchbyte.atlassian.net/jira/software/projects/FE/boards/1).
+- Follow the [Conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) style.
+- Be a mixture of the two, such as: `FE-1888: add markdown linting`
+
+Then put useful description in the box to help your reviewer for any non-trivial case.
 Do they need to test any particular action?
 What is the purpose of your PR?
 Did you need to make any difficult decisions?
@@ -83,42 +95,22 @@ These are usually the linters, license checks and unit tests.
 
 While the PR is sitting waiting for a review, you can move your card  to `Review` in [Jira](https://touchbyte.atlassian.net/jira/software/projects/FE/boards/1) (if applicable) and get started on something else.
 
-### Commits
+Please note that pull requests are an iterative process.
+It is expected that there will be some things that need changing or fixing - we are all human after all.
+Only once both reviewer and coder are happy and understand changes, will the pull request be approved.
 
-Use [Conventional commits](https://www.conventionalcommits.org/en/v1.0.0/), no matter how small the commit, so that the history is easily parsable by people and tools alike.
+## Automated Tests
 
-There's an excellent [VSCode extention](https://marketplace.visualstudio.com/items?itemName=vivaxy.vscode-conventional-commits) that can help with this, including [gitmojis](https://gitmoji.dev/). 💩
-
-### Code Review
-
-When picking up a PR for review, ask yourself: are you familiar with the repo enough to judge these changes?
-
-**If you are**, then check the description, make sure the tests are passing and use the [Reviewer Checklist](https://github.com/touchbyteltd/.github/blob/master/PULL_REQUEST_TEMPLATE.md) as a guide.
-Be judgy, but concise and constructive in your feedback.
-Remember: We all make mistakes and we're all trying to become better developers.
-However, we mustn't let standards slip when letting code get out into production.
-Better to request changes 4, 5, 6 times (working alongside the requester if necessary) than find a critical bug has slipped by and breaks at deployment to prod.
-
-**If you are not**, then get the developer who submitted the PR to talk through their PR.
-What is this repo about?
-What did it do before the PR and what is the PR trying to achieve?
-Get the requester to explain their submission and run through a test of it with you and ask questions about their decisions around different commands and functionality.
-We should all aim to be comfortable with the codebase.
-Even if you don't understand something now, this will help you to be ready to review or even submit the next PR to this repo.
-When you are comfortable with the changes made, any follow-up changes have been pushed and no issue shave arisen, you can accept and merge the PR.
-Lastly, if you are still uncertain after a thorough explainer about the repo and the PR, get @miketrebilcock to do it. ;)
-
-## CI/CD
-
-We make liberal use of GitHub actions to check our work as well as the Pull Request process.
-Some of these are critical and enforced, but all checks can be done locally using command line tools or VSCode extensions.
-In emergencies *(such as game-breaking bugs pushed to prod)*, @miketrebilcock can bypass these checks and force through a merge.
-@HarrisonHG also has these powers, but he'll just give you the eye and complain about good practice.
+We make liberal use of GitHub actions to check our work during the Pull Request process.
+Some of these are critical and enforced, but all checks can be done locally using command line tools or [VSCode extensions](#recommended-tools).
 
 It's also worth noting that once a commit does make its way to `Dev`, a long build process will be triggered by `facentry-universe` that is run in the [terraform repo](https://github.com/touchbyteltd/terraform/actions/workflows/create-update-env.yml).
-If this dev build fails, you are **strongly** recommended to check the reason for failure and fix it up before our [sprint-ly deployment](https://touchbyte.atlassian.net/wiki/spaces/FaceEntry/pages/113541136/Development+Deployment+Process#Closing-the-Sprint) occurs.
+If this dev build fails, you are **strongly** recommended to check the reason for failure and fix it up before our [sprint-ly deployment](https://touchbyte.atlassian.net/wiki/x/EIDEBg) occurs.
 
 ### Linting
+
+Linters perform a light quality check on your code for things such as spacing, naming convention and unused variables.
+All linters have clear documentation indicating which rule is broken and when, so if you get a linting error, search for the code in the respective documentation for a detailed case on what's wrong, why it's bad and how to fix it.
 
 Look out for these badges in each repository:
 
@@ -134,7 +126,6 @@ Click any of these badges to see where the testing action or tool is hosted.
 ### Unit Tests & Code Coverage
 
 Code coverage means to cover our code in unit tests.
-Any time a new function or class is made, or any time a new pathway through the code is added, **a new unit test must be made** that covers the changes.
 These tests are run automatically using the tools appropriate to the repository and its languages.
 
 [![PyTest Badge](https://img.shields.io/badge/testing-PyTest-darkblue)](https://pypi.org/project/pytest/)
