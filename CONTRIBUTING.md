@@ -149,7 +149,7 @@ If this error is thrown, click `Details` to go to Snyk and see which new library
 A new line must be added to the open source declarations in the support site.
 Create a PR in the [support site repo](https://github.com/saltosystems-internal/support.saltosystems.com) or notify @HarrisonHG with a link to the online source (such as GitHub or package hosting site).
 Then you can mark the check as a success in the Snyk site and the PR will update.
-- [![Snyk License Check](https://img.shields.io/badge/Snyk-Securiy-purple)](https://app.snyk.io/org/salto-orion/) **Security**: Checks dependencies for security vulnerabilities.
+- [![Snyk License Check](https://img.shields.io/badge/Snyk-Security-purple)](https://app.snyk.io/org/salto-orion/) **Security**: Checks dependencies for security vulnerabilities.
 If this error is thrown, it usually means you need to use a more up-to-date version of a library, or find an alternative one because this library is unsafe.
 - [![Snyk License Check](https://img.shields.io/badge/Snyk-SCA-purple)](https://app.snyk.io/org/salto-orion/) **static-code-analysis**: Sometimes blended in with other actions to save a few pennies, this looks over your code for potential security vulnerabilities **in your code**, such as hard-coded API keys or opportunities for SQL injection.
 If this error is thrown, you've got some re-writes to do.
