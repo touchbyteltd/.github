@@ -14,5 +14,5 @@ What did it do before the PR and what is the PR trying to achieve?
 Get the requester to explain their submission and run through a test of it with you and ask questions about their decisions around different commands and functionality.
 We should all aim to be comfortable with the codebase.
 Even if you don't understand something now, this will help you to be ready to review or even submit the next PR to this repo.
-When you are comfortable with the changes made, any follow-up changes have been pushed and no issue shave arisen, you can accept and merge the PR.
-Lastly, if you are still uncertain after a thorough explainer about the repo and the PR, get @miketrebilcock to do it. ;)
+When you are comfortable with the changes made, any follow-up changes have been pushed and no issues have arisen, you can accept and merge the PR.
+Lastly, if you are still uncertain after a thorough explainer about the repo and the PR, get @miketrebilcock to do it. 😉
